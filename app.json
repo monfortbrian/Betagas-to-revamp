@@ -1,0 +1,14 @@
+{
+  "name": "Betagas",
+  "description": "Betagas website",
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
