@@ -7,28 +7,30 @@ import LogoDark from "assets/betagas logo.png";
 import { DrawerProvider } from "../../contexts/drawer/drawer.provider";
 import MobileDrawer from "./mobile-drawer";
 import menuItems from "./header.data";
-import { FaGlobeAfrica } from "react-icons/fa";
-import { MdOutlineTranslate } from "react-icons/md";
+import { FaLanguage } from "react-icons/fa";
 
 import t from "../../locales";
 import { useRouter } from "next/router";
+import useClickOutside from "hooks/useClickOutside";
+import { useRef, useState } from "react";
 
 export default function Header({ className }) {
 	const router = useRouter();
 	const { locale } = router;
+	const [isActive, setIsActive] = useState(false);
+	const ref = useRef(null);
 
-	const handleTranslation = () => {
-		switch (locale) {
-			case "en":
-				router.push(router.pathname, router.pathname, { locale: "fr" });
-				break;
-			case "fr":
-				router.push(router.pathname, router.pathname, { locale: "en" });
-				break;
-			default:
-				break;
-		}
+	useClickOutside(ref, () => setIsActive(false));
+
+	const toEnglish = () => {
+		router.push(router.pathname, router.pathname, { locale: "en" });
+		setIsActive(false);
 	};
+	const toFrench = () => {
+		router.push(router.pathname, router.pathname, { locale: "fr" });
+		setIsActive(false);
+	};
+
 	return (
 		<DrawerProvider>
 			<header sx={styles.header} className={className} id="header">
@@ -56,20 +58,47 @@ export default function Header({ className }) {
 							alignItems: "center",
 						}}
 					>
-						<div sx={styles.menu}>
-							<button sx={styles.menuButton}>
-								<MdOutlineTranslate />
+						<div sx={styles.menu} ref={ref}>
+							<button
+								sx={styles.menuButton}
+								onClick={() => setIsActive(x => !x)}
+							>
+								<FaLanguage />
 							</button>
-							<div sx={styles.menuList}>
-								<div>En</div>
-								<div>Sw</div>
+							<div
+								sx={{
+									...styles.menuList,
+									opacity: `${isActive ? 1 : 0}`,
+									visibility: `${
+										isActive ? "visible" : "hidden"
+									}`,
+									transform: `${
+										isActive
+											? "translateY(0px)"
+											: "translateY(30px)"
+									}`,
+								}}
+							>
+								<div
+									sx={styles.menuListItem}
+									onClick={toEnglish}
+									className={locale === "en" ? "active" : ""}
+								>
+									English
+								</div>
+								<div
+									sx={styles.menuListItem}
+									onClick={toFrench}
+									className={locale === "fr" ? "active" : ""}
+								>
+									French
+								</div>
 							</div>
 						</div>
 						<Button
 							className="donate__btn"
 							variant="secondary"
 							aria-label="Become Distributor"
-							onClick={handleTranslation}
 						>
 							Become Distributor
 						</Button>
@@ -155,14 +184,43 @@ const styles = {
 		position: "relative",
 	},
 	menuButton: {
-		padding: "5px 10px",
-		fontSize: "18px",
+		padding: "6px",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		fontSize: "22px",
+		cursor: "pointer",
+		backgroundColor: "#fff",
+		borderRadius: "4px",
+		border: "2px solid #043CFD",
+		color: "#043CFD",
+		outline: "none",
 	},
 	menuList: {
+		transition: "300ms all ease",
 		position: "absolute",
 		top: "50px",
 		width: "100px",
-		border: "1px solid",
-		padding: "10px",
+		border: "1px solid #043CFD",
+		padding: "6px",
+		borderRadius: "4px",
+		backgroundColor: "#fff",
+	},
+	menuListItem: {
+		transition: "300ms all ease",
+		cursor: "pointer",
+		padding: "0 4px",
+		color: "#043CFD",
+		borderRadius: "4px",
+		margin: "4px 0",
+
+		"&:hover": {
+			backgroundColor: "#d6dfff",
+			color: "#043CFD",
+		},
+		"&.active": {
+			backgroundColor: "#043CFD",
+			color: "#fff",
+		},
 	},
 };
