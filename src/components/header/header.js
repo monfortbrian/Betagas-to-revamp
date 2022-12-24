@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Flex, Button, Select } from "theme-ui";
+import { jsx, Container, Flex, Button, Select, Box } from "theme-ui";
 import { keyframes } from "@emotion/core";
 import { Link } from "react-scroll";
 import Logo from "components/logo";
@@ -7,7 +7,9 @@ import LogoDark from "assets/betagas logo.png";
 import { DrawerProvider } from "../../contexts/drawer/drawer.provider";
 import MobileDrawer from "./mobile-drawer";
 import menuItems from "./header.data";
-import { IoIosAddCircle } from "react-icons/io";
+import { FaGlobeAfrica } from "react-icons/fa";
+import { MdOutlineTranslate } from "react-icons/md";
+
 import t from "../../locales";
 import { useRouter } from "next/router";
 
@@ -30,7 +32,7 @@ export default function Header({ className }) {
 	return (
 		<DrawerProvider>
 			<header sx={styles.header} className={className} id="header">
-				<Container sx={styles.container}>
+				<Box sx={styles.container}>
 					<Logo src={LogoDark} />
 
 					<Flex as="nav" sx={styles.nav}>
@@ -51,17 +53,18 @@ export default function Header({ className }) {
 					<Flex
 						sx={{
 							gap: 2,
+							alignItems: "center",
 						}}
 					>
-						{/* <Select
-							defaultValue="Hello"
-							sx={{
-								minWidth: "60px",
-							}}
-						>
-							<option>En</option>
-							<option>Fr</option>
-						</Select> */}
+						<div sx={styles.menu}>
+							<button sx={styles.menuButton}>
+								<MdOutlineTranslate />
+							</button>
+							<div sx={styles.menuList}>
+								<div>En</div>
+								<div>Sw</div>
+							</div>
+						</div>
 						<Button
 							className="donate__btn"
 							variant="secondary"
@@ -72,7 +75,7 @@ export default function Header({ className }) {
 						</Button>
 					</Flex>
 					<MobileDrawer />
-				</Container>
+				</Box>
 			</header>
 		</DrawerProvider>
 	);
@@ -123,6 +126,9 @@ const styles = {
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "space-between",
+		px: [4, 6],
+		maxWidth: "1400px",
+		mx: "auto",
 	},
 	nav: {
 		mx: "auto",
@@ -144,5 +150,19 @@ const styles = {
 				color: "primary",
 			},
 		},
+	},
+	menu: {
+		position: "relative",
+	},
+	menuButton: {
+		padding: "5px 10px",
+		fontSize: "18px",
+	},
+	menuList: {
+		position: "absolute",
+		top: "50px",
+		width: "100px",
+		border: "1px solid",
+		padding: "10px",
 	},
 };
