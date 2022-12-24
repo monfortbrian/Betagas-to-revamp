@@ -9,6 +9,7 @@ import {
 	FaEnvelope,
 	FaFacebookSquare,
 	FaFax,
+	FaHeart,
 	FaInstagram,
 	FaMapMarkerAlt,
 	FaPhoneAlt,
@@ -104,7 +105,9 @@ export default function Footer() {
 						</nav>
 					</Box>
 					<Text sx={styles.footer.copyright}>
-						Made with by {new Date().getFullYear()} Bluetec
+						Made with{" "}
+						<FaHeart display="inline-block" color="#f23a40" /> by
+						Bluetec
 					</Text>
 				</Box>
 			</Container>
@@ -154,7 +157,7 @@ const styles = {
 			borderTop: "1px solid",
 			borderTopColor: "border_color",
 			display: "flex",
-			pt: [7, null, 8],
+			pt: [7, null, 2],
 			pb: ["40px", null, "100px"],
 			textAlign: "center",
 			flexDirection: "column",
@@ -167,6 +170,7 @@ const styles = {
 				alignItems: "center",
 				justifyContent: "center",
 				flexWrap: "wrap",
+				textTransform: "uppercase",
 			},
 		},
 
@@ -186,8 +190,9 @@ const styles = {
 			},
 		},
 		copyright: {
-			fontSize: [1, "15px"],
+			fontSize: [1, "14px"],
 			width: "100%",
+			opacity: 0.8,
 		},
 	},
 	// widgets: {
