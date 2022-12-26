@@ -10,6 +10,8 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "camel-case": "^4.1.2",
+    "color": "^4.2.3",
     "dotenv": "^8.2.0",
     "framer-motion": "^2.7.5",
     "globby": "^11.0.0",
