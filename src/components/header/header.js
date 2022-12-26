@@ -84,14 +84,14 @@ export default function Header({ className }) {
 									onClick={toEnglish}
 									className={locale === "en" ? "active" : ""}
 								>
-									English
+									{t[locale]["English"]}
 								</div>
 								<div
 									sx={styles.menuListItem}
 									onClick={toFrench}
 									className={locale === "fr" ? "active" : ""}
 								>
-									French
+									{t[locale]["French"]}
 								</div>
 							</div>
 						</div>

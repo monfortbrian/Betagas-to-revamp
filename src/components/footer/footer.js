@@ -56,37 +56,40 @@ export default function Footer() {
 								<FaPhoneAlt fontSize="24px" />
 								<div sx={styles.footer.footerBoxEltLeft}>
 									<h5>PHONE</h5>
-									<p>(257)77 502 604</p>
+									<a href="tel:77502604">(257)77 502 604</a>
 								</div>
 							</div>
 							<div sx={styles.footer.footerBoxElt}>
 								<FaFax fontSize="24px" />
 								<div sx={styles.footer.footerBoxEltLeft}>
 									<h5>FAX</h5>
-									<p>(257)22 221 020</p>
+									<a href="tel:77502604">(257)22 221 020</a>
 								</div>
 							</div>
 							<div sx={styles.footer.footerBoxElt}>
 								<FaEnvelope fontSize="24px" />
 								<div sx={styles.footer.footerBoxEltLeft}>
 									<h5>EMAIL</h5>
-									<p>ask@betagas.bi</p>
+									<a href="mailto:ask@betagas.bi">
+										ask@betagas.bi
+									</a>
 								</div>
 							</div>
 						</div>
-						<div
-							sx={{
-								display: "flex",
-								gap: "24px",
-								alignItems: "center",
-								marginTop: "10px",
-							}}
-						>
-							<div>our social media</div>
-							<FaFacebookSquare />
-							<FaTwitter />
-							<FaYoutube />
-							<FaInstagram />
+						<div sx={styles.footer.footerSocial}>
+							<div>Our social media</div>
+							<a href="www.fb.com">
+								<FaFacebookSquare />
+							</a>
+							<a href="www.twitter.com">
+								<FaTwitter />
+							</a>
+							<a href="www.youtube.com">
+								<FaYoutube />
+							</a>
+							<a href="www.instagram.com">
+								<FaInstagram />
+							</a>
 						</div>
 					</Box>
 				</Box>
@@ -106,8 +109,12 @@ export default function Footer() {
 					</Box>
 					<Text sx={styles.footer.copyright}>
 						Made with{" "}
-						<FaHeart display="inline-block" color="#f23a40" /> by
-						Bluetec
+						<FaHeart
+							display="inline-block"
+							color="#f23a40"
+							fontSize="10px"
+						/>{" "}
+						by Bluetec
 					</Text>
 				</Box>
 			</Container>
@@ -127,18 +134,30 @@ const styles = {
 		footerLocation: {
 			display: "flex",
 			alignItems: "center",
-			gap: "12px",
+			gap: "14px",
 			marginBottom: "10px",
 		},
 		footerBoxContainer: {
 			display: "flex",
+			flexDirection: ["column", null, null, "row"],
 			alignItems: "space-between",
-			gap: "32px",
+			gap: ["12px", null, null, "32px"],
 		},
 		footerBoxElt: {
 			display: "flex",
 			alignItems: "center",
-			gap: "12px",
+			gap: "14px",
+		},
+		footerSocial: {
+			display: "flex",
+			gap: "24px",
+			alignItems: "center",
+			marginTop: "10px",
+			a: {
+				color: "#0081FE",
+				fontSize: "22px",
+				display: "inherit",
+			},
 		},
 		footerBoxEltLeft: {
 			display: "flex",
@@ -148,9 +167,11 @@ const styles = {
 				margin: 0,
 				marginBottom: "-6px",
 			},
-			p: {
+			a: {
 				margin: 0,
 				padding: 0,
+				color: "#0081FE",
+				textDecoration: "none",
 			},
 		},
 		footerBottomArea: {
