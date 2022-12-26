@@ -12,7 +12,7 @@ const packages = {
   monthly: [
     {
       id: 1,
-      name: 'Cuisiniere a gas manuelleC',
+      name: 'Cuisiniere a gas manuelle',
       description: 'For Small teams or office',
 
       points: [
