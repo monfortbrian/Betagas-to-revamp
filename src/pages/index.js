@@ -4,7 +4,7 @@ import { StickyProvider } from '../contexts/app/app.provider';
 import theme from 'theme';
 import SEO from 'components/seo';
 import Layout from 'components/layout';
-import Banner from '../sections/banner';
+import Banner from '../sections/banner_';
 import KeyFeature from '../sections/key-feature';
 import ServiceSection from '../sections/service-section';
 import Feature from '../sections/feature';
@@ -15,6 +15,7 @@ import TeamSection from '../sections/team-section';
 import TestimonialCard from '../sections/testimonial';
 import BlogSection from '../sections/blog-section';
 import Subscribe from '../sections/subscribe';
+import Accordion from '../sections/accordion';
 
 export default function IndexPage() {
   return (
@@ -23,16 +24,18 @@ export default function IndexPage() {
         <Layout>
           <SEO title="Betagas" />
           <Banner />
-          <KeyFeature />
           <ServiceSection />
-          <Feature />
+          <KeyFeature />
           <CoreFeature />
+          <Feature />
+
           <WorkFlow />
-          <Package />
+          {/* <Package /> */}
           <TeamSection />
           <TestimonialCard />
-          <BlogSection />
-          <Subscribe />
+          {/* <BlogSection /> */}
+
+          {/* <Subscribe /> */}
         </Layout>
       </StickyProvider>
     </ThemeProvider>

@@ -1,0 +1,43 @@
+.hero {
+  width: 100%;
+  transform: translateY(-80px);
+  box-sizing: border-box;
+  z-index: 10;
+  position: relative;
+  margin-bottom: -95px;
+}
+
+.hero__child a {
+  background-color: #83202d;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 10px;
+  margin: 0px auto;
+  display: block;
+  width: fit-content;
+  font-size: 0.7em;
+  font-weight: 600;
+  transition: 400ms all ease;
+}
+
+.hero__child a:hover {
+  background-color: #b12b3d;
+}
+
+.hero__child h1 {
+  margin-bottom: -20px;
+}
+
+.hero__child p {
+  font-weight: 250;
+}
+
+.hero__child {
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  width: auto;
+  font-size: 1.4em;
+  height: auto;
+  z-index: 10;
+}
